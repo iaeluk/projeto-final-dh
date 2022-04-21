@@ -28,7 +28,7 @@ export default function Filtro({ filtered, city, cidades }) {
             </SubMenu>
 
             <div className="flex flex-col gap-1 pt-6 sm:flex-row ">
-                <div className="bg-gray-200">
+                <div className="max-w-md bg-gray-200  min-w-sm">
                     <FiltroCidade>
                         <EspecificacoesFC>
                             <Calendarios>

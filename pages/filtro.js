@@ -49,7 +49,7 @@ export default function Filtro({ cidades }) {
             </SubMenu>
 
             <div className="flex flex-col gap-1 pt-6 sm:flex-row ">
-                <div className="bg-gray-200">
+                <div className="max-w-md bg-gray-200 min-w-sm">
                     <FiltroCidade>
                         <EspecificacoesFC>
                             <Calendarios>
@@ -271,7 +271,7 @@ pb-3
 pr-2
 `
 
-export async function getStaticProps() {
+export async function getServerSideProps() {
     const cidades = await fetch(`http://3.84.31.150:8080/cidade/`).then(
         (res) => {
             if (res.ok) {

@@ -11,13 +11,6 @@ import { Container, Title, Button } from '../styles/globalStyles'
 
 const Message = tw.div`text-xs text-red-500 p-0 m-0`
 
-// const userData = {
-//     nome: 'Lucas',
-//     sobrenome: 'Mendonça',
-//     email: 'lucas21rio@gmail.com',
-//     password: '123456',
-// }
-
 // const LoginSchema = Yup.object().shape({
 //     email: Yup.string().test(
 //         '',

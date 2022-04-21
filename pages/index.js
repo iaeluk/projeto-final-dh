@@ -120,7 +120,7 @@ const RecommendsCardContainer = tw.div`
     xl:w-10/12
 `
 
-export async function getStaticProps() {
+export async function getServerSideProps() {
     const categorias = await fetch(`http://3.84.31.150:8080/categoria`).then(
         (res) => {
             if (res.ok) {
@@ -164,6 +164,6 @@ export async function getStaticProps() {
             cidades,
             recomendacoesCategoria,
         },
-        revalidate: 1,
+        // revalidate: 1,
     }
 }
