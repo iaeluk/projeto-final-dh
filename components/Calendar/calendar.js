@@ -31,8 +31,6 @@ const calendar = ({
     handleSubmit,
     column,
     placeOptions,
-    // initialPlace,
-    // initialRangeDate,
     cidades,
     ...restOfProps
 }) => {

@@ -11,17 +11,19 @@ export default function CategoriesCard({
 }) {
     return (
         <CardContainer className={className}>
-            <ImageContainer>
-                <Image
-                    className="cursor-pointer rounded-t-md"
-                    src={img}
-                    layout="fill"
-                    objectFit="cover"
-                    objectPosition="center"
-                    alt="imagem principal"
-                    title={`${categoria} ${disponibilidade}`}
-                />
-            </ImageContainer>
+            <Link href={`/filtered/${id}`} passHref>
+                <ImageContainer>
+                    <Image
+                        className="cursor-pointer rounded-t-md"
+                        src={img}
+                        layout="fill"
+                        objectFit="cover"
+                        objectPosition="center"
+                        alt="imagem principal"
+                        title={`${categoria} ${disponibilidade}`}
+                    />
+                </ImageContainer>
+            </Link>
             <InfoContainer>
                 <InfoCategory>
                     <Link href={`/filtered/${id}`} passHref>

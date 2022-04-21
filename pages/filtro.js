@@ -271,7 +271,7 @@ pb-3
 pr-2
 `
 
-export async function getServerSideProps() {
+export async function getStaticProps() {
     const cidades = await fetch(`http://3.84.31.150:8080/cidade/`).then(
         (res) => {
             if (res.ok) {

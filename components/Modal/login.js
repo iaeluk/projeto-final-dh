@@ -12,26 +12,6 @@ import { AccountContext } from '../../contexts/AccountContext'
 
 const Message = tw.div`text-xs text-red-500 p-0 m-0`
 
-// const userData = {
-//     nome: 'Lucas',
-//     sobrenome: 'Mendonça',
-//     email: 'lucas21rio@gmail.com',
-//     senha: '123456',
-// }
-
-// const LoginSchema = Yup.object().shape({
-//     email: Yup.string().test(
-//         '',
-//         'Por favor, tente novamente, suas credenciais são inválidas.',
-//         (val) => val === decodedUser.email
-//     ),
-//     password: Yup.string().test(
-//         '',
-//         'Por favor, tente novamente, suas credenciais são inválidas.',
-//         (val) => val === decodedUser.senha
-//     ),
-// })
-
 export default function LoginModal() {
     const {
         isLoginOpen,
