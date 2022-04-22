@@ -1,10 +1,9 @@
-// import { ThemeProvider } from 'next-themes'
-
 import 'rsuite/dist/rsuite.min.css'
 import SimpleReactLightbox from 'simple-react-lightbox'
 import Header from '../components/Header'
 import Footer from '../components/Footer'
 import '../styles/globals.css'
+// import { ThemeProvider } from 'next-themes'
 
 import { AccountContextProvider } from '../contexts/AccountContext'
 
