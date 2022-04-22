@@ -28,7 +28,7 @@ export default function Filtro({ filtered, city, cidades }) {
             </SubMenu>
 
             <div className="flex flex-col gap-1 pt-6 sm:flex-row ">
-                <div className="max-w-md bg-gray-200  min-w-sm">
+                <div className="max-w-md bg-gray-200 min-w-sm">
                     <FiltroCidade>
                         <EspecificacoesFC>
                             <Calendarios>
@@ -108,6 +108,7 @@ export default function Filtro({ filtered, city, cidades }) {
                             imagens,
                             caracteristicas,
                             avaliacao,
+                            preco,
                         } = recomendacao
 
                         let cidadeNome
@@ -159,6 +160,7 @@ export default function Filtro({ filtered, city, cidades }) {
                                 img={firstImage}
                                 descricao={descricao}
                                 caracteristicas={caracteristicas}
+                                preco={preco}
                                 categoria={cidadeNome}
                                 rating={avaliacao}
                                 localizacao={city.rua}

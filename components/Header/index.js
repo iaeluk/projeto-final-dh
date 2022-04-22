@@ -5,6 +5,7 @@ import tw from 'twin.macro'
 import { AiOutlineClose } from 'react-icons/ai'
 import { useTheme } from 'next-themes'
 import { destroyCookie } from 'nookies'
+import Router from 'next/router'
 import DarkMode from '../DarkMode'
 import Sidebar from '../Sidebar'
 import logo from '../../public/assets/logo.svg'
@@ -20,7 +21,6 @@ export default function Header() {
 
     const { user, setUser, setIsSignUpOpen, setIsLoginOpen } =
         useContext(AccountContext)
-
     return (
         <HeaderContainer>
             <Nav>
@@ -70,6 +70,15 @@ export default function Header() {
                     </NotLoggedIn>
                 ) : (
                     <LoggedIn>
+                        {user.funcao === 'ROLE_ADMIN' ? (
+                            <Link href="/admin" passHref>
+                                <span className="text-center cursor-pointer">
+                                    CADASTRAR PRODUTOS
+                                </span>
+                            </Link>
+                        ) : (
+                            ''
+                        )}
                         <UserInitials>
                             {user.nome[0]}
                             {user.sobrenome[0]}
@@ -87,6 +96,7 @@ export default function Header() {
                             onClick={() => {
                                 setUser(undefined)
                                 destroyCookie(null, 'DB_booking_token')
+                                Router.push('/')
                             }}
                         />
                     </LoggedIn>

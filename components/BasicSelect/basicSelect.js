@@ -15,7 +15,7 @@ export default function BasicSelect() {
     }
 
     return (
-        <div className="pl-3 w-[53%] pb-3 pt-3">
+        <div className="w-full p-3 pt-3 pb-3">
             <Box sx={{ minWidth: 120 }}>
                 <FormControl fullWidth>
                     <InputLabel id="demo-simple-select-label">

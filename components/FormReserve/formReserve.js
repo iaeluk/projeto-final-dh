@@ -6,7 +6,6 @@ import { AccountContext } from '../../contexts/AccountContext'
 
 export default function FormReserve() {
     const { user } = useContext(AccountContext)
-    const { nome, sobrenome, email } = user
 
     const [cidade, setCidade] = useState()
     return (
@@ -18,7 +17,7 @@ export default function FormReserve() {
                         label="Nome"
                         name="firstName"
                         type="text"
-                        placeholder={nome}
+                        placeholder={user.nome || ''}
                         disabled
                     />
                     <TextField
@@ -26,7 +25,7 @@ export default function FormReserve() {
                         label="E-mail"
                         name="email"
                         type="email"
-                        placeholder={email}
+                        placeholder={user.email || ''}
                         disabled
                     />
                 </div>
@@ -37,7 +36,7 @@ export default function FormReserve() {
                         label="Sobrenome"
                         name="lastName"
                         type="text"
-                        placeholder={sobrenome}
+                        placeholder={user.sobrenome || ''}
                         disabled
                     />
 

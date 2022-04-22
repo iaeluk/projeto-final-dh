@@ -43,6 +43,7 @@ export function AccountContextProvider({ children }) {
                 id: dados.id,
                 nome: dados.nome,
                 sobrenome: dados.sobrenome,
+                funcao: dados.funcoes.nome,
                 email: dados.email,
             })
 
@@ -74,6 +75,7 @@ export function AccountContextProvider({ children }) {
             setUser({
                 id: dados.id,
                 nome: dados.nome,
+                funcao: dados.funcoes.nome,
                 sobrenome: dados.sobrenome,
                 email: dados.email,
             })
@@ -92,6 +94,7 @@ export function AccountContextProvider({ children }) {
     }
 
     async function signUp(firstName, lastName, email, password) {
+        const funcao = 'ROLE_USER'
         axios
             .post('https://back-endbooking.herokuapp.com/usuario', {
                 nome: firstName,
@@ -99,7 +102,7 @@ export function AccountContextProvider({ children }) {
                 email,
                 senha: password,
                 funcoes: {
-                    nome: 'user',
+                    nome: funcao,
                 },
             })
             .then(() => {
@@ -109,6 +112,7 @@ export function AccountContextProvider({ children }) {
                 setUser({
                     nome: firstName,
                     sobrenome: lastName,
+                    funcao,
                     email,
                     senha: password,
                 })

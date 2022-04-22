@@ -57,6 +57,21 @@ export default function Sidebar() {
                                 </UserInfo>
                             </div>
                         </MenuHead>
+                        {user.funcao === 'ROLE_ADMIN' ? (
+                            <Link href="/admin" passHref>
+                                <button
+                                    type="button"
+                                    onClick={() => {
+                                        setIsOpen(!isOpen)
+                                    }}
+                                    className="w-full p-3 font-bold text-right cursor-pointer hover:text-primary-color"
+                                >
+                                    CADASTRAR PRODUTOS
+                                </button>
+                            </Link>
+                        ) : (
+                            ''
+                        )}
                         <MenuBody className="flex items-end justify-end">
                             <div>
                                 <span

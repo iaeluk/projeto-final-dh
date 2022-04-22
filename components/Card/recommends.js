@@ -12,6 +12,7 @@ export default function RecommendsCard({
     categoria,
     descricao,
     rating,
+    preco,
     className,
 }) {
     return (
@@ -33,19 +34,23 @@ export default function RecommendsCard({
                     <RatingStars rating={rating} />
                 </InfoCategory>
                 <InfoTitle>{titulo}</InfoTitle>
-                <InfoMap>
-                    <FaMapMarkerAlt color="grey" />
+                <div className="flex items-center justify-between font-bold text-primary-color">
+                    <InfoMap>
+                        <FaMapMarkerAlt color="grey" />
 
-                    <Link
-                        href={`/locale/${titulo
-                            .toLowerCase()
-                            .replaceAll(' ', '-')}/${id}#map`}
-                        passHref
-                    >
-                        <span className="cursor-pointer">Mostrar no mapa</span>
-                    </Link>
-                </InfoMap>
-
+                        <Link
+                            href={`/locale/${titulo
+                                .toLowerCase()
+                                .replaceAll(' ', '-')}/${id}#map`}
+                            passHref
+                        >
+                            <span className="cursor-pointer">
+                                Mostrar no mapa
+                            </span>
+                        </Link>
+                    </InfoMap>
+                    <span>R${preco}</span>
+                </div>
                 <InfoDescription>{`${descricao.substring(
                     0,
                     73

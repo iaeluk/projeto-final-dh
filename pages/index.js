@@ -50,6 +50,7 @@ export default function Home({
                             nome,
                             imagens,
                             descricao,
+                            preco,
                             caracteristicas,
                             avaliacao,
                         } = recomendacao
@@ -64,6 +65,7 @@ export default function Home({
                                 titulo={nome}
                                 img={firstImage}
                                 descricao={descricao}
+                                preco={preco}
                                 caracteristicas={caracteristicas}
                                 categoria={recomendacoesCategoria.nome}
                                 rating={avaliacao}

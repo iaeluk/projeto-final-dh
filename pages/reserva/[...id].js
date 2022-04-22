@@ -15,6 +15,7 @@ import { Card, CardMedia, CardContent, CardActions } from '@mui/material'
 import { FaMapMarkerAlt } from 'react-icons/fa'
 import Box from '@mui/material/Box'
 import axios from 'axios'
+import { destroyCookie } from 'nookies'
 import RatingStars from '../../components/RatingStars'
 import TextField from '../../components/TextField'
 import { AccountContext } from '../../contexts/AccountContext'
@@ -27,8 +28,14 @@ export default function Reserve({
     categoriaNome,
     dateToDisable,
 }) {
-    const { initialRangeDate, setInitialRangeDate, userToken, user, time } =
-        useContext(AccountContext)
+    const {
+        initialRangeDate,
+        setInitialRangeDate,
+        userToken,
+        user,
+        setUser,
+        time,
+    } = useContext(AccountContext)
 
     const [value, setValue] = useState(initialRangeDate || [null, null])
 
@@ -49,8 +56,15 @@ export default function Reserve({
         return null
     }
 
-    const dateCheckIn = new Date(value[0]).toLocaleDateString()
-    const dateCheckOut = new Date(value[1]).toLocaleDateString()
+    const dateCheckIn = new Date(value[0]).toLocaleDateString() || new Date()
+    const dateCheckOut = new Date(value[1]).toLocaleDateString() || new Date()
+
+    const a = moment(value[1] || new Date())
+    const b = moment(value[0] || new Date())
+
+    const diasReservados = a.diff(b, 'days') + 1
+
+    const valorTotal = (reserva.preco * diasReservados).toFixed(2)
 
     async function makeAReserve() {
         const options = {
@@ -78,12 +92,16 @@ export default function Reserve({
                 }
             })
             .catch((error) => {
-                console.error(error)
+                if (error.toString().includes('403')) {
+                    destroyCookie(null, 'DB_booking_token')
+                    setUser(undefined)
+                    Router.push('/login')
+                }
             })
     }
 
     return (
-        <>
+        <div className="flex flex-col items-center justify-center w-full">
             <Head>
                 <title>Digital Booking | Reservar</title>
             </Head>
@@ -186,7 +204,7 @@ export default function Reserve({
                             <div className="row-span-2 p-3">
                                 <CheckCircleOutlineIcon sx={{ fontSize: 20 }} />
                                 <span className="text-[12px] font-semibold text-[#31363F] pl-1">
-                                    Seu quarto estara pronto para check-in entre
+                                    Seu quarto estará pronto para check-in entre
                                     16h00 e 23h00
                                 </span>
                             </div>
@@ -198,7 +216,7 @@ export default function Reserve({
                     </div>
                 </div>
                 <div>
-                    <div className="pt-[70px] px-5 md:pl-[120px] lg:pl-[220px] pr-3 md:pr-5">
+                    <div className="pt-4 px-5 md:pl-[120px] lg:pl-[220px] pr-3 md:pr-5">
                         <Card className="lg:max-w-[450px] w-full flex flex-row md:flex-col">
                             <div className="lg:w-[50%%] w-[100%] flex flex-col sm:flex-row md:flex-col lg:flex-col">
                                 <div className="">
@@ -246,12 +264,15 @@ export default function Reserve({
                                                     <span>{dateCheckOut}</span>
                                                 </div>
                                             </div>
+
                                             <div className="pt-5">
+                                                <div className="flex justify-between w-full px-4 font-bold text-md text-primary-color">
+                                                    <span className="">
+                                                        TOTAL:
+                                                    </span>
+                                                    <span>R${valorTotal}</span>
+                                                </div>
                                                 <CardActions>
-                                                    {/* <Link
-                                                        href="/reserve"
-                                                        passHref
-                                                    > */}
                                                     <MobileButton
                                                         onClick={() => {
                                                             if (
@@ -266,8 +287,17 @@ export default function Reserve({
                                                     >
                                                         Confirmar reserva
                                                     </MobileButton>
+
                                                     {/* </Link> */}
                                                 </CardActions>
+                                                {!time ? (
+                                                    <div className="text-center text-red-500">
+                                                        Selecione um horário
+                                                        antes de continuar
+                                                    </div>
+                                                ) : (
+                                                    ''
+                                                )}
                                             </div>
                                         </div>
                                     </CardContent>
@@ -338,7 +368,7 @@ export default function Reserve({
                     </div>
                 </div>
             </div>
-        </>
+        </div>
     )
 }
 const Title = tw.h2`

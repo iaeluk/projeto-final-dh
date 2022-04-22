@@ -40,7 +40,8 @@ export default function Product({ locale, mapData, column, dateToDisable }) {
     const { user, initialRangeDate, setInitialRangeDate } =
         useContext(AccountContext)
 
-    const { nome, descricao, imagens, caracteristicas, avaliacao } = locale
+    const { nome, descricao, imagens, caracteristicas, avaliacao, preco } =
+        locale
 
     const theme = useTheme()
     const isMobile = useMediaQuery(theme.breakpoints.down('sm'))
@@ -101,12 +102,17 @@ export default function Product({ locale, mapData, column, dateToDisable }) {
                                 <span className="underline underline-offset-4">
                                     {nome}
                                 </span>
-                                <RatingStars rating={avaliacao} />
+                                <span className="flex items-center justify-end gap-2">
+                                    <RatingStars rating={avaliacao} />{' '}
+                                </span>
                             </TitleAndStarContainer>
-
+                            <div className="font-bold text-right text-md text-primary-color">
+                                R${preco}
+                            </div>
                             <DescriptionContainer>
                                 {descricao}
                             </DescriptionContainer>
+
                             <div>
                                 <h2 className="w-full mb-3 text-lg font-bold text-left text-primary-color">
                                     O que esse lugar oferece
@@ -207,7 +213,7 @@ export default function Product({ locale, mapData, column, dateToDisable }) {
                                 Datas disponíveis
                             </h2>
                             <div className="flex flex-col place-items-center ">
-                                <div className="items-center justify-center col-span-2 md:flex">
+                                <div className="items-center justify-center col-span-2 bg-[#f0f0f0] md:flex">
                                     <LocalizationProvider
                                         locale={ptBR}
                                         dateAdapter={AdapterDateFns}
@@ -334,6 +340,15 @@ export default function Product({ locale, mapData, column, dateToDisable }) {
                                         </MobileButton>
                                     </div>
                                 </div>
+                                {initialRangeDate === null ||
+                                initialRangeDate === undefined ? (
+                                    <span className="text-red-500">
+                                        Selecione uma data antes de fazer sua
+                                        reserva.
+                                    </span>
+                                ) : (
+                                    ''
+                                )}
                             </div>
                         </div>
                         <span id="map" />

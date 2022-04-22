@@ -118,6 +118,7 @@ export default function Filtro({ cidades }) {
                             descricao,
                             cidadeId,
                             imagens,
+                            preco,
                             caracteristicas,
                             avaliacao,
                         } = recomendacao
@@ -170,6 +171,7 @@ export default function Filtro({ cidades }) {
                                 titulo={nome}
                                 img={firstImage}
                                 descricao={descricao}
+                                preco={preco}
                                 caracteristicas={caracteristicas}
                                 categoria={cidadeNome}
                                 rating={avaliacao}
