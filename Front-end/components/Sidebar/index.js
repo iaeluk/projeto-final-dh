@@ -82,7 +82,7 @@ export default function Sidebar() {
                                     }}
                                     className="w-full p-3 font-bold text-right cursor-pointer hover:text-primary-color"
                                 >
-                                    SEJA PARCEIRO
+                                    SEJA UM PARCEIRO
                                 </button>
                             </a>
                         )}
