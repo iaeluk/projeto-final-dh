@@ -70,7 +70,21 @@ export default function Sidebar() {
                                 </button>
                             </Link>
                         ) : (
-                            ''
+                            <a
+                                href="https://forms.gle/DtryyUpQwP1da3t88"
+                                target="_blank"
+                                rel="noreferrer"
+                            >
+                                <button
+                                    type="button"
+                                    onClick={() => {
+                                        setIsOpen(!isOpen)
+                                    }}
+                                    className="w-full p-3 font-bold text-right cursor-pointer hover:text-primary-color"
+                                >
+                                    SEJA PARCEIRO
+                                </button>
+                            </a>
                         )}
                         <MenuBody className="flex items-end justify-end">
                             <div>

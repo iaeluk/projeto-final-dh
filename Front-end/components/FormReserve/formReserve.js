@@ -22,10 +22,10 @@ export default function FormReserve() {
                     />
                     <TextField
                         className="bg-[#DFE4EA]"
-                        label="E-mail"
-                        name="email"
-                        type="email"
-                        placeholder={user.email || ''}
+                        label="Sobrenome"
+                        name="lastName"
+                        type="text"
+                        placeholder={user.sobrenome || ''}
                         disabled
                     />
                 </div>
@@ -33,10 +33,10 @@ export default function FormReserve() {
                 <div className="flex flex-col w-full gap-1 mr-2 text-center">
                     <TextField
                         className="bg-[#DFE4EA]"
-                        label="Sobrenome"
-                        name="lastName"
-                        type="text"
-                        placeholder={user.sobrenome || ''}
+                        label="E-mail"
+                        name="email"
+                        type="email"
+                        placeholder={user.email || ''}
                         disabled
                     />
 

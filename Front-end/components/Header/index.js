@@ -72,12 +72,20 @@ export default function Header() {
                     <LoggedIn>
                         {user.funcao === 'ROLE_ADMIN' ? (
                             <Link href="/admin" passHref>
-                                <span className="text-center cursor-pointer">
-                                    CADASTRAR
+                                <span className="text-sm font-bold text-center cursor-pointer hover:text-primary-color">
+                                    ADMINISTRAR
                                 </span>
                             </Link>
                         ) : (
-                            ''
+                            <a
+                                href="https://forms.gle/DtryyUpQwP1da3t88"
+                                target="_blank"
+                                rel="noreferrer"
+                            >
+                                <span className="text-sm font-bold text-center no-underline hover:text-primary-color">
+                                    SEJA PARCEIRO
+                                </span>
+                            </a>
                         )}
                         <UserInitials>
                             {user.nome[0]}
