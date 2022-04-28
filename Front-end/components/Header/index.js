@@ -81,9 +81,10 @@ export default function Header() {
                                 href="https://forms.gle/DtryyUpQwP1da3t88"
                                 target="_blank"
                                 rel="noreferrer"
+                                className="text-sm font-bold text-center no-underline hover:text-primary-color"
                             >
-                                <span className="text-sm font-bold text-center no-underline hover:text-primary-color">
-                                    SEJA PARCEIRO
+                                <span className="text-sm font-bold text-center hover:text-primary-color">
+                                    SEJA UM PARCEIRO
                                 </span>
                             </a>
                         )}
